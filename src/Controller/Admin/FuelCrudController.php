@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Controller\Admin;
+
+use App\Entity\Fuel;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+
+/**
+ * @extends AbstractCrudController<Fuel>
+ */
+final class FuelCrudController extends AbstractCrudController
+{
+    public static function getEntityFqcn(): string
+    {
+        return Fuel::class;
+    }
+
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            IdField::new('id')->hideOnForm(),
+            TextField::new('type'),
+        ];
+    }
+}
